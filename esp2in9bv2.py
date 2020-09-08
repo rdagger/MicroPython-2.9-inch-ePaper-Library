@@ -118,7 +118,6 @@ class Display(object):
         with open(path, "rb") as f:
             buf = bytearray(f.read(array_size))
             fb = FrameBuffer(buf, w, h, MONO_HMSB)
-            print()
 
             if rotate == 0 and invert is True:  # 0 degrees
                 fb2 = FrameBuffer(bytearray(array_size), w, h, MONO_HMSB)

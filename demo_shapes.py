@@ -7,7 +7,7 @@ from esp2in9bv2 import Display
 def test():
     """Test code."""
     spi = SPI(2, baudrate=14500000, sck=Pin(18), mosi=Pin(23))
-    display = Display(spi, dc=Pin(19), cs=Pin(5), rst=Pin(21), busy=Pin(22))
+    display = Display(spi, dc=Pin(4), cs=Pin(5), rst=Pin(2), busy=Pin(15))
 
     display.draw_rectangle(0, 0, 63, 63)
     display.fill_rectangle(5, 5, 53, 53, red=True)
