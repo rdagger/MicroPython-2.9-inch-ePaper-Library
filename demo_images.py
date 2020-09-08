@@ -1,7 +1,7 @@
 """ESP2in9b v.2 demo (images)."""
-from esp2in9bv2 import Display
-from machine import Pin, SPI
 from time import sleep
+from machine import Pin, SPI
+from esp2in9bv2 import Display
 
 
 def test():

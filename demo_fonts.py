@@ -1,8 +1,8 @@
 """ESP2in9b v.2 demo (fonts)."""
+from time import sleep
+from machine import Pin, SPI
 from xglcd_font import XglcdFont
 from esp2in9bv2 import Display
-from machine import Pin, SPI
-from time import sleep
 
 
 def test():

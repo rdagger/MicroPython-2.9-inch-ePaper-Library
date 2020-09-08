@@ -1,7 +1,8 @@
 """2.9 inch E-paper display black/red version 2."""
-from framebuf import FrameBuffer, GS8, MONO_HLSB, MONO_HMSB, MONO_VLSB
-from utime import sleep_ms
 from math import cos, sin, pi, radians
+from micropython import const
+from framebuf import FrameBuffer, GS8, MONO_HLSB, MONO_HMSB
+from utime import sleep_ms
 
 
 class Display(object):
@@ -132,7 +133,8 @@ class Display(object):
                 for y1 in range(h):
                     for x1 in range(w):
                         if invert is True:
-                            fb2.pixel(y1, x1, fb.pixel(x1, (h - 1) - y1) ^ 0x01)
+                            fb2.pixel(y1, x1,
+                                      fb.pixel(x1, (h - 1) - y1) ^ 0x01)
                         else:
                             fb2.pixel(y1, x1, fb.pixel(x1, (h - 1) - y1))
                 fb = fb2
@@ -142,9 +144,10 @@ class Display(object):
                     for x1 in range(w):
                         if invert is True:
                             fb2.pixel(x1, y1, fb.pixel((w - 1) - x1,
-                                                     (h - 1) - y1) ^ 0x01)
+                                                       (h - 1) - y1) ^ 0x01)
                         else:
-                            fb2.pixel(x1, y1, fb.pixel((w - 1) - x1, (h - 1) - y1))
+                            fb2.pixel(x1, y1,
+                                      fb.pixel((w - 1) - x1, (h - 1) - y1))
                 fb = fb2
             elif rotate == 270:  # 270 degrees
                 byte_width = (w - 1) // 8 + 1
@@ -153,7 +156,8 @@ class Display(object):
                 for y1 in range(h):
                     for x1 in range(w):
                         if invert is True:
-                            fb2.pixel(y1, x1, fb.pixel((w - 1) - x1, y1) ^ 0x01)
+                            fb2.pixel(y1, x1,
+                                      fb.pixel((w - 1) - x1, y1) ^ 0x01)
                         else:
                             fb2.pixel(y1, x1, fb.pixel((w - 1) - x1, y1))
                 fb = fb2
@@ -203,8 +207,8 @@ class Display(object):
                         index = (w * y1) + x1 - 1
                         buf[index] = f.read(1)[0]
             if invert:
-                for i, v in enumerate(buf):
-                    buf[i] ^= 0xFF
+                for b in buf:
+                    b ^= 0xFF
 
             fbuf = FrameBuffer(buf, w, h, GS8)
             if red:
@@ -491,9 +495,9 @@ class Display(object):
                 y += (h + spacing)
             elif rotate == 180:
                 # Fill in spacing
-                #if spacing:
-                    #self.fill_rectangle(x - w - spacing, y, spacing, h,
-                                        #red, not invert)
+                if spacing:
+                    self.fill_rectangle(x - w - spacing, y, spacing, h,
+                                        red, not invert)
                 # Position x for next letter
                 x -= (w + spacing)
             elif rotate == 270:
@@ -757,7 +761,7 @@ class Display(object):
     def ReadBusy(self):
         """Check if display busy."""
         self.write_cmd(self.GET_STATUS)
-        while(self.busy.value() == 0):      # 0: busy, 1: idle
+        while self.busy.value() == 0:      # 0: busy, 1: idle
             self.write_cmd(self.GET_STATUS)
             sleep_ms(200)
 

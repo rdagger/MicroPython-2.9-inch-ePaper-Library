@@ -104,20 +104,30 @@ class XglcdFont(object):
         if invert is True:  # 0 bit is black/red so inverted is default
             for i in range(0, array_size, byte_height):
                 ba2[pos] = ba[i]
-                if byte_height > 1: ba2[pos + width] = ba[i + 1]
-                if byte_height > 2: ba2[pos + width * 2] = ba[i + 2]
-                if byte_height > 3: ba2[pos + width * 3] = ba[i + 3]
-                if byte_height > 4: ba2[pos + width * 4] = ba[i + 4]
-                if byte_height > 5: ba2[pos + width * 5] = ba[i + 5]
+                if byte_height > 1:
+                    ba2[pos + width] = ba[i + 1]
+                if byte_height > 2:
+                    ba2[pos + width * 2] = ba[i + 2]
+                if byte_height > 3:
+                    ba2[pos + width * 3] = ba[i + 3]
+                if byte_height > 4:
+                    ba2[pos + width * 4] = ba[i + 4]
+                if byte_height > 5:
+                    ba2[pos + width * 5] = ba[i + 5]
                 pos += 1
         else:  # Use XOR to negate inversion
             for i in range(0, array_size, byte_height):
                 ba2[pos] = ba[i] ^ 0xFF
-                if byte_height > 1: ba2[pos + width] = ba[i + 1] ^ 0xFF
-                if byte_height > 2: ba2[pos + width * 2] = ba[i + 2] ^ 0xFF
-                if byte_height > 3: ba2[pos + width * 3] = ba[i + 3] ^ 0xFF
-                if byte_height > 4: ba2[pos + width * 4] = ba[i + 4] ^ 0xFF
-                if byte_height > 5: ba2[pos + width * 5] = ba[i + 5] ^ 0xFF
+                if byte_height > 1:
+                    ba2[pos + width] = ba[i + 1] ^ 0xFF
+                if byte_height > 2:
+                    ba2[pos + width * 2] = ba[i + 2] ^ 0xFF
+                if byte_height > 3:
+                    ba2[pos + width * 3] = ba[i + 3] ^ 0xFF
+                if byte_height > 4:
+                    ba2[pos + width * 4] = ba[i + 4] ^ 0xFF
+                if byte_height > 5:
+                    ba2[pos + width * 5] = ba[i + 5] ^ 0xFF
                 pos += 1
 
         fb = FrameBuffer(ba2, width, height, MONO_VLSB)
@@ -136,7 +146,8 @@ class XglcdFont(object):
             fb2 = FrameBuffer(bytearray(array_size), width, height, MONO_VLSB)
             for y in range(height):
                 for x in range(width):
-                    fb2.pixel(x, y, fb.pixel((width - 1) - x, (height - 1) - y))
+                    fb2.pixel(x, y,
+                              fb.pixel((width - 1) - x, (height - 1) - y))
             return fb2, width, height
         elif rotate == 270:  # 270 degrees
             byte_width = (width - 1) // 8 + 1
