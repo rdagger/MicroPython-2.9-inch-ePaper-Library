@@ -206,8 +206,8 @@ class Display(object):
                         index = (w * y1) + x1 - 1
                         buf[index] = f.read(1)[0]
             if invert:
-                for b in buf:
-                    b ^= 0xFF
+                for i, _ in enumerate(buf):
+                    buf[i] ^= 0xFF
 
             fbuf = FrameBuffer(buf, w, h, GS8)
             if red:
