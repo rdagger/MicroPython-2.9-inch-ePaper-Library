@@ -1,12 +1,13 @@
 """ESP2in9b v.2 demo (shapes)."""
 from time import sleep
-from machine import Pin, SPI
+from machine import Pin, SPI  # type: ignore
 from esp2in9bv2 import Display
 
 
 def test():
     """Test code."""
-    spi = SPI(2, baudrate=14500000, sck=Pin(18), mosi=Pin(23))
+    # Try lowering baudrate if you encounter problems
+    spi = SPI(2, baudrate=34500000, sck=Pin(18), mosi=Pin(23))
     display = Display(spi, dc=Pin(4), cs=Pin(5), rst=Pin(2), busy=Pin(15))
 
     display.draw_rectangle(0, 0, 63, 63)

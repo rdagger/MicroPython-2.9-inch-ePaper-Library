@@ -81,8 +81,6 @@ class Display(object):
         self.ReadBusy()
         self.clear_buffers(red, black)
         self.present(red, black)
-        self.write_cmd(self.DISPLAY_REFRESH)
-        sleep_ms(200)
         self.ReadBusy()
 
     def clear_buffers(self, red=True, black=True):
