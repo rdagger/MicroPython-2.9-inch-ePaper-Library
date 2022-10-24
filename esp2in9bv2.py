@@ -406,8 +406,8 @@ class Display(object):
         Args:
             x (int): X position.
             y (int): Y position.
-            red (bool): True = red line, False (Default) = black line.
-            invert (bool): True = clear line, False (Default) = draw line.
+            red (bool): True = red pixel, False (Default) = black pixel.
+            invert (bool): True = clear pixel, False (Default) = draw pixel.
         """
         if self.is_off_grid(x, y, x, y):
             return
