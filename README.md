@@ -8,9 +8,6 @@ There are sample images in monocrhome (monoHMSB) and raw format.  I’ve include
 demo_images.py example draws monochrome images in black & white and red & white:
 ![Images](https://user-images.githubusercontent.com/106355/197632321-380348bf-f0b6-4b74-a63e-e70678df1b33.jpg)
 
-demo_image_raw.py example draws raw monochrome images in black & white and red & white:
-![Raw_Images](https://user-images.githubusercontent.com/106355/197632342-3e20fa3b-cb2b-460b-a837-86d7429401dc.jpg)
-
 demo_fonts.py example:
 ![Fonts](https://user-images.githubusercontent.com/106355/197632359-5195418a-7b69-442c-aa51-a71e05faeef1.jpg)
 
