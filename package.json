@@ -1,0 +1,8 @@
+{
+  "urls": [
+    ["esp2in9bv2.py", "github:rdagger/MicroPython-2.9-inch-ePaper-Library/esp2in9bv2.py"],
+    ["xglcd_font.py", "github:rdagger/MicroPython-2.9-inch-ePaper-Library/xglcd_font.py"]
+  ],
+  "version": "1.0.0",
+  "deps": []
+}
